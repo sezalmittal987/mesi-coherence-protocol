@@ -1,0 +1,14 @@
+{
+  "name": "mesi-cache-coherence",
+  "version": "1.0.0",
+  "description": "implementation of mesi protocol in js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sezal",
+  "license": "ISC",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
