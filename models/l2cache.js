@@ -15,6 +15,9 @@ class L2Cache {
     return this.l1Caches;
   }
 
+  getCacheLines(){
+    return  this.cacheLineToCacheAndState;
+  }
   /**
    * When an L1Cache tries to write to a cache line and it hasn't already written to that
    * line or cached it exclusively, it calls this method to get ownership of the cache
@@ -38,9 +41,13 @@ class L2Cache {
     if (!currentCacheLine) {
       console.log('As no one had cached it or they no longer have it , so we are loading it from the main memory.');
       currentCacheLine = loadFromMainMemory(cacheLine);
+      console.log('We are assigning cache line to the requestor with modified state.');
+      this.cacheLineToCacheAndState[cacheLine]=[{cache: requestor, state: MS.M}];
     }
-    console.log('We are assigning cache line to the requestor with exclisive state .');
-    this.cacheLineToCacheAndState[cacheLine] = [{cache: requestor, state: MS.E}];
+    else {
+      console.log('We are assigning cache line to the requestor with exclusive state.');
+      this.cacheLineToCacheAndState[cacheLine]=[{cache: requestor, state: MS.E}];
+    }
     return currentCacheLine;
   }
 
@@ -59,7 +66,7 @@ class L2Cache {
         if (!cachesAndStates[i] || cachesAndStates[i].state === MS.I) {
           continue;
         }
-        console.log(`Requesting L1 cache ${i} with having same cacheline to snoop share.`);
+        console.log(`Requesting L1 caches with same cacheline to snoop share.`);
         const currentValue = cachesAndStates[i].cache.snoopShare(cacheLine);
         if (currentValue) { 
           console.log('Changing its state to shared and assigning cache line to requestor with shared status.');
