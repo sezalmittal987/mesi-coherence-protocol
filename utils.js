@@ -9,9 +9,17 @@ const computeOffset = function(address) {
   return address % cacheLineSize;
 }
 
+const MS = {
+  M: 'Modified',
+  E: 'Exclusive',
+  S: 'Shared',
+  I: 'Invalid',
+};
+
 module.exports = {
   computeCacheLine: computeCacheLine,
   computeOffset: computeOffset,
   cacheLineSize: cacheLineSize,
   defaultValue: defaultValue,
+  MS : MS
 };

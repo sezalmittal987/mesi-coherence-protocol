@@ -2,7 +2,7 @@ const prompt = require('prompt-sync')();
  
 const numberL1 = prompt('How many L1 caches do you want?');
 
-const l2Cache = new (require('./models/l2cache'))(numberL1);
+const l2Cache = new (require('./classes/l2cache'))(numberL1);
 
 var l1Cache =[];
 for(var i=0;i<numberL1;i++){

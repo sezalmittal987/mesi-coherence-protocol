@@ -1,4 +1,4 @@
-const MS = require('./MesiStates');
+const MS = require('../utils').MS;
 const CacheLine = require('./cacheLine');
 const utils = require('../utils');
 

@@ -1,6 +1,6 @@
 const CacheLine = require('./cacheLine');
 const L1Cache = require('./l1cache');
-const MS = require('./MesiStates');
+const MS = require('../utils').MS;
 
 class L2Cache {
   constructor(numberL1) {
